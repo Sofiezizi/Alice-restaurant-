@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <title>ALICE RESTAURANT</title>
+  <meta name="robots" content="noindex">
+  <meta name="author" content="Sofie Zizi">
+  <meta name="description" content="Nyd et godt måltid">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keyword" content="Mad, drikkevarer, hygge, samvær">
+  <link rel="stylesheet" href="style.css">
+
+
+
+<!-- ikon i faneblad / browser -->
+	  <link rel="icon" type="image/x-icon" href="images/logo.png"/>
+</head>
+<body>
+
+
+
+<nav>
+
+  <!--Burgermenu-->
+  <div id="burgernav">☰</div>
+
+
+  <!--Id til click event-->
+  <div id="besked"></div>
+  <div id="visBurgerIgen">X</div>
+
+  <!--Menupunkter-->
+
+   <div class="menupunkter">
+
+  <ul>
+    <li> <a href="index.html">MENUKORT</a></li>
+    <li> <a href="index.html">ÅBNINGSTIDER</a></li>
+    <li> <a href="index.html">BOOK BORD</a></li>
+    <li> <a href="index.html">KONTAKT</a></li>
+  </ul>
+   </div>
+</nav>
+
+
+<!--Forsidebillede-->
+<div class="teksten">
+<img class="forsidebillede" src="images/pizza.png" alt="forsidebillede">
+
+</div>
+
+<!--tekst på forsiden-->
+<div class="forsidetekst">
+  <h1>VELKOMMEN TIL RESTAURANTEN</h1>
+  <p> Her kan du se alle vores fantastiske medarbejdere, som er med til at gøre restauranten perfekt.</p>
+</div>
+
+<!--Medarbejdere lavet i liste alfabetisk-->
+
+<section>
+  <h2>Medarbejdere</h2>
+  <div id="liste"></div>
+</section>
+
+
+<!--Book bord formular - SELVSTUDIEDAG 3-->
+<h1>Book bord</h1>
+
+<form action="action.html">
+    <fieldset id="navn">
+      <legend>Reservation</legend>
+      Navn: <input type="text" name="Name" value=""> <br>
+      Email: <input type="text" name="Email" value=""> <br>
+
+      <div id="btn1" class"alleknapperne">Næste</div>
+
+    </fieldset>
+
+    <fieldset id="radio">
+      <legend>Vælg en dato</legend>
+      <!-- radio buttons -->
+      <input type="radio" id="html" name="fav_language" value="HTML">
+      <label for="html">Fredag d. 4/2-2022</label><br>
+      <input type="radio" id="css" name="fav_language" value="CSS">
+      <label for="css">Lørdag d. 5/2-2022</label><br>
+      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+      <label for="javascript">Søndag d. 6/2-2022</label>
+      <div id="btn2" class"alleknapperne">Næste</div>
+    </fieldset>
+
+
+
+    <fieldset id="tjek">
+      <legend>Vælg klokkeslet</legend>
+      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+      <label for="vehicle1"> Kl. 17.00</label><br>
+      <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+      <label for="vehicle2"> Kl. 18.00</label><br>
+      <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+      <label for="vehicle3"> Kl. 19.00</label>
+      <div id="btn3" class"alleknapperne">Næste</div>
+    </fieldset>
+
+
+    <fieldset id="lastField">
+      <legend>Det var det tak for din reservation</legend>
+      <input type="submit" value="Submit">
+    </fieldset>
+  </form>
+
+    <!-- Book bord formular java -->
+
+  <script>
+    //Form del 1
+          btn1.addEventListener('click', function () {
+          radio.style.display='block';
+          navn.style.display= 'none';
+          })
+
+    //Form del 2
+          btn2.addEventListener('click', function () {
+          tjek.style.display='block';
+          radio.style.display= 'none';
+          })
+
+    //Form del 3
+          btn3.addEventListener('click', function () {
+          tjek.style.display='none';
+          lastField.style.display= 'block';
+          })
+
+  </script>
+
+<!-- Video fra Pexels.com -->
+
+  <video width="auto" controls autoplay class="video">
+    <source src="materiale/video.mp4" type="video/mp4">
+    </video>
+
+<!-- Lyd fra Pexels.com -->
+
+<div id="lyd">
+  <audio id="myaudio">
+    <source src="materiale/musik.mp3" type=audio/wav>
+    </audio>
+  </div>
+
+  <!-- Java video og lyd  -->
+
+  <script>
+
+  window.addEventListener("scroll", function() {
+
+    let mySound = document.getElementById("myaudio");
+    let lyd = document.getElementById("lyd");
+
+    console.log("is the #lyd visible or not?" + elFllVsbl(lyd)); //For at teste
+
+    //Start og stop video og lyd
+
+    if (elFllVsbl(lyd)) {
+    if (!(mySound.currentTime > 0)) {
+      mySound.play(); // Afspil video
+    }
+
+    } else {
+    mySound.pause();
+    mySound.currentTime = 0; //lyden afspiller igen
+    }
+  })
+
+
+  function elFllVsbl( el ) {
+    return (
+      el.getBoundingClientRect().top >= 0 && el.getBoundingClientRect().bottom < window.innerHeight);
+    }
+  </script>
+
+    <!-- MENUKORT med Json  -->
+
+  <h1 class="overskrift">MENUKORT</h1>
+  <div id="menukort"></div>
+
+  <script>
+
+    menu = `{
+
+        "menu": [
+
+          {
+            "id": 1,
+            "titel": "Carpaccio",
+            "beskrivelse": "Med ruccola og parmesan",
+            "pris": "90,-",
+            "ret": "Forret",
+            "foto": "hej.jpg"
+          },
+          {
+            "id": 2,
+            "titel": "Rejecocktail",
+            "beskrivelse": "Med salat og dressing",
+            "pris": "59,-",
+            "ret": "Forret ",
+            "foto": "hej.jpg"
+          },
+          {
+            "id": 3,
+            "titel": "Steak ",
+            "beskrivelse": "Med kartofler og sovs ",
+            "pris": "245,-",
+            "ret": "Hovedret",
+            "foto": "steak.jpg "
+          },
+          {
+            "id": 4,
+            "titel": "Burger ",
+            "beskrivelse": "Med ost og bacon ",
+            "pris": "79,-",
+            "ret": "Hovedret ",
+            "foto": "burger.jpg"
+          },
+          {
+            "id": 5,
+            "titel": "Brownie",
+            "beskrivelse": "Med frugt ",
+            "pris": "49,-",
+            "ret": "Dessert ",
+            "foto": "hej.jpg"
+          },
+          {
+            "id": 6,
+            "titel": "Is",
+            "beskrivelse": "3 forskellig slags is ",
+            "pris": "49,-",
+            "ret": "Dessert ",
+            "foto": "hej.jpg "
+          },
+          {
+            "id": 7,
+            "titel": "Dip",
+            "beskrivelse": "Vælg mellem hvidløg eller chili",
+            "pris": "10,-",
+            "ret": "Tilbehør ",
+            "foto": "hej.jpg"
+          }
+        ]
+      }`;
+
+
+  const xxx = JSON.parse(menu);
+  console.log( xxx.menu[1].titel )
+
+  // loop der henter hele arrayet
+  for (let i=0; i<xxx.menu.length; i++){
+    console.log( xxx.menu[i].titel )
+    menukort.innerHTML += `
+      <div class="menuTing">
+        <h3> ${xxx.menu[i].ret} </h3>
+        <h2> ${xxx.menu[i].titel} </h2>
+        <p> ${xxx.menu[i].beskrivelse} </p>
+        <p> ${xxx.menu[i].pris} </p>
+      </div>
+    `
+  }
+
+
+  </script>
+
+
+<!-- Medarbejdere liste java - SELVSTUDIE DAG 1 -->
+
+  <script>
+  let VisListe, medarbejdere = [
+    "Bente Mikkelsen",
+    "Søren Housted",
+    "Karen Andersen",
+    "Amanda Sørensen",
+    "Philip Gade",
+    "Anders Hansen",
+    "Mathilde Iversen",
+    "Sofia Vilhelmsen",
+    "Martin Christensen",
+  ]
+
+//Sorter listen således:
+    medarbejdere.sort();
+
+  for (VisListe in medarbejdere) {
+
+    liste.innerHTML += '<li>' + medarbejdere[VisListe] + '</li>';
+  }
+
+//Når man trykker på burgerbaren kommer der menu - SELVSTUDIEDAG 2
+
+
+
+let t = document.getElementById('burgernav');
+
+function minFunktion(){
+besked.innerHTML = `
+<nav>
+<ul>
+<ul>
+  <li><a href="restaurant.html"> MENUKORT</li>
+  <li><a href="restaurant.html">ÅBNINGSTIDER</li>
+  <li><a href="restaurant.html">BOOK BORD</li>
+  <li><a href="restaurant.html">KONTAKT</li>
+</ul>
+</ul>
+</nav>
+`;
+
+}
+
+burgernav.addEventListener('click', minFunktion);
+
+hej.addEventListener('click', function(){
+
+})
+
+</script>
+
+
+
+
+<!-- Footer - SELVSTUDIE DAG 1 -->
+  <div id="footer">
+      <p>© Sofie Zizi Fre 28 jan 2022, 10:00</p>
+
+      <section>
+        <h2>Information</h2>
+        <div id="info"></div>
+
+        <!-- Til datoobject -->
+          <h1>Åbningstider</h1>
+          <div id="infodato"></div>
+
+
+      </section>
+      <script>
+
+      let restaurant = {
+        name: 'Alice restaurant',
+        adress: 'Latinerkvarteret 28, 8000 Aarhus C',
+        number: '+45 16 76 85 47',
+        info: function() {
+          return this.name +" <br> "+ this.adress +"<br>"+ this.number;
+        }
+      }
+
+      document.getElementById('info').innerHTML = restaurant.info();
+
+
+
+
+    // datoopbjekt
+
+var today = new Date();
+
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+var dateTime = date+' '+time;
+
+document.getElementById("infodato").innerHTML = dateTime;
+
+    //søndag = 0
+
+
+  switch (new Date().getDay()) {
+
+    case 1:
+      day = 'Mandag 12:00 - 23:00';
+      break;
+    case 2:
+      day = 'Tirsdag 12:00 - 23:00';
+      break;
+    case 3:
+      day = 'Onsdag 17:00 - 23:00';
+      break;
+    case 4:
+      day = 'Torsdag 18:00 - 22:15';
+      break;
+    case 5:
+      day = 'Fredag 12:00 - 00:00';
+      break;
+
+    default:
+      day = 'Weekend: Lukket'
+  }
+
+  infodato.innerHTML = day;
+
+
+      </script>
+
+    </div>
+
+</body>
+</html>
